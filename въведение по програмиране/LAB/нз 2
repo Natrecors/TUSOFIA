@@ -1,0 +1,190 @@
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# # Параметри
+# A = 3       # Амплитуда 3V
+# f = 20      # Честота 20Hz
+# T = 1/f     # Период 0.05s
+# t = np.linspace(0, 0.1, 500) # Показваме 2 периода (0.1 сек)
+# y = A * np.sin(2 * np.pi * f * t)
+
+# plt.figure(figsize=(8, 4))
+# plt.plot(t, y, 'b', linewidth=2)
+
+# # Оформление
+# plt.title(f'Синусоидален сигнал (Амплитуда {A}V, Честота {f}Hz)', fontsize=12)
+# plt.xlabel('Време (s)', fontsize=10)
+# plt.ylabel('Амплитуда (V)', fontsize=10)
+# plt.axhline(0, color='black', linewidth=1) # Ос X
+# plt.axvline(0, color='black', linewidth=1) # Ос Y
+# plt.grid(True, linestyle='--', alpha=0.6)
+
+# # Обозначаване на Амплитудата (според условието)
+# plt.annotate('', xy=(0.0125, 3), xytext=(0.0125, 0),
+#              arrowprops=dict(arrowstyle='<->', color='red', lw=1.5))
+# plt.text(0.015, 1.5, 'A = 3V', color='red', fontsize=12, fontweight='bold')
+
+# # Обозначаване на Периода (според условието)
+# plt.annotate('', xy=(0.05, -3.5), xytext=(0, -3.5),
+#              arrowprops=dict(arrowstyle='<->', color='green', lw=1.5))
+# plt.text(0.015, -3.3, 'Период T = 0.05s', color='green', fontsize=12, fontweight='bold')
+
+# # Настройки на осите
+# plt.ylim(-4, 4)
+# plt.yticks(np.arange(-3, 4, 1))
+# plt.xticks(np.arange(0, 0.11, 0.01))
+
+# plt.tight_layout()
+# plt.show()
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# # Входни данни
+# A = 3  # Амплитуда
+# f = 20 # Честота (Hz)
+# fs = 100 # Дискретизация (Hz)
+# duration = 90 # Продължителност (секунди)
+
+# # Генериране на сигнал
+# t = np.arange(0, duration, 1/fs)
+# signal = A * np.sin(2 * np.pi * f * t)
+
+# # Визуализация (частична)
+# plt.plot(t[:100], signal[:100])
+# plt.title("Синусоидален сигнал")
+# plt.xlabel("Време [s]")
+# plt.ylabel("Амплитуда [V]")
+# plt.grid(True)
+# plt.show()
+
+# print(f"Период: {1/f} s")
+# print(f"Брой отчети: {len(signal)}")
+
+
+# import numpy as np
+# import matplotlib.pyplot as plt
+
+# # Входни данни
+# A = 3  # Амплитуда за Тест 1
+# f = 20 # Честота в Hz
+# fs = 100 # Честота на дискретизация
+# duration = 90 # Продължителност (X=9 -> 90 секунди)
+
+# # Генериране на времева ос и сигнал
+# t = np.arange(0, duration, 1/fs) # Времеви стъпки
+# signal = A * np.sin(2 * np.pi * f * t)
+
+# # Визуализация (само първите няколко периода за яснота)
+# plt.plot(t[:50], signal[:50]) # Показваме само първите 0.5 сек (50 точки)
+# plt.title("Синусоидален сигнал")
+# plt.xlabel("Време [s]")
+# plt.ylabel("Амплитуда [V]")
+# plt.grid(True)
+# plt.show()
+
+# # Период
+# T = 1/f
+# print(f"Периодът е: {T} секунди")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Общи параметри за всички тестове (спрямо фак. номер)
+f = 20       # Честота Hz
+T = 1/f      # Период (0.05s)
+fs = 100     # Дискретизация
+t = np.linspace(0, 0.1, 500) # Показваме 2 периода (до 0.1s)
+
+# Списък с амплитудите за четирите теста
+variants = [
+    {"A": 3, "label": "Тест 1: Амплитуда 3V"},
+    {"A": 1, "label": "Тест 2: Амплитуда 1V"},
+    {"A": 4, "label": "Тест 3: Амплитуда 4V"},
+    {"A": 5, "label": "Тест 4: Амплитуда 5V"}
+]
+
+# Създаване на фигура с 4 под-графики
+fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+fig.suptitle(f'Въпрос 3: Синусоидални сигнали за Фак. No: ...069 (f={f}Hz, T={T}s)', fontsize=16)
+
+# Цикъл за чертаене на всеки вариант
+for i, variant in enumerate(variants):
+    row = i // 2
+    col = i % 2
+    ax = axs[row, col]
+    
+    A = variant["A"]
+    y = A * np.sin(2 * np.pi * f * t)
+    
+    # Чертане на сигнала
+    ax.plot(t, y, color='blue', linewidth=2)
+    ax.set_title(variant["label"], fontsize=12, fontweight='bold')
+    ax.set_xlabel('Време (s)')
+    ax.set_ylabel('Амплитуда (V)')
+    ax.grid(True, linestyle='--', alpha=0.7)
+    
+    # Настройки на осите
+    ax.axhline(0, color='black', linewidth=1)
+    ax.set_ylim(-(A+1), (A+1))
+    
+    # ОТБЕЛЯЗВАНЕ НА ПЕРИОДА (Хоризонтална стрелка)
+    # Показваме един пълен цикъл от 0 до 0.05
+    ax.annotate('', xy=(0.05, -A), xytext=(0, -A),
+                arrowprops=dict(arrowstyle='<->', color='green', lw=2))
+    ax.text(0.01, -A + (A*0.1), f'T = {T}s', color='green', fontweight='bold')
+    
+    # ОТБЕЛЯЗВАНЕ НА АМПЛИТУДАТА (Вертикална стрелка)
+    # От оста X до върха
+    ax.annotate('', xy=(0.0125, A), xytext=(0.0125, 0),
+                arrowprops=dict(arrowstyle='<->', color='red', lw=2))
+    ax.text(0.015, A/2, f'A = {A}V', color='red', fontweight='bold')
+
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+plt.show()
+
+import numpy as np
+
+def sawtooth_wave(A, f, t):
+    """
+    Генерира трионообразен сигнал: x(t) = 2A/T * (t mod T) - A
+    """
+    T = 1 / f  # Изчисляване на периода
+
+    # Използваме скоби за (t % T), за да изолираме тази операция.
+    # Без скобите, Python би изпълнил действията от ляво на дясно
+    # (заради равния приоритет на *, / и %), което би довело до грешен резултат.
+    return (2 * A / T) * (t % T) - A
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sawtooth_wave(A, f, t):
+    """
+    Генерира трионообразен сигнал: x(t) = 2A/T * (t mod T) - A
+    """
+    T = 1 / f  # Изчисляване на периода
+    return (2 * A / T) * (t % T) - A
+
+# Параметри на сигнала
+A = 1.0   # Амплитуда
+f = 2.0   # Честота (Hz)
+t = np.linspace(0, 2, 1000) # Времеви интервал от 0 до 2 секунди
+
+# Генериране на сигнала
+y = sawtooth_wave(A, f, t)
+
+# Визуализация
+plt.figure(figsize=(10, 5))
+plt.plot(t, y, label=f'A={A}, f={f} Hz')
+plt.title('Визуализация на трионообразен сигнал')
+plt.xlabel('Време (t) [s]')
+plt.ylabel('Амплитуда (x(t))')
+plt.grid(True)
+plt.axhline(0, color='black', linewidth=0.5) # Ос X
+plt.legend()
+plt.show()
+
+
+
