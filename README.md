@@ -1,6 +1,6 @@
 # 🎓 TUSOFIA (Technical University of Sofia)
 
-Welcome to my university coursework repository! This repository serves as a collection of my assignments, projects, and practical exercises completed during my studies at the Technical University of Sofia. 
+Welcome to my university coursework repository! This repository serves as a collection of my FKST assignments, projects, and practical exercises completed during my studies at the Technical University of Sofia. 
 
 
 ## 📁 Repository Structure
@@ -16,7 +16,7 @@ The repository is organized by subject/course name:
 ## 💻 Technologies Used
 * **Python** 
 * **C**
-* **cisco packet tracer**
+* **Cisco packet tracer**
 
 ## 🚀 Getting Started
 
