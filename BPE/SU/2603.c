@@ -424,4 +424,3 @@ int zad9() {
     printf("\n\n");
     return 0;
 }
-//da
