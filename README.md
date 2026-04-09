@@ -8,10 +8,10 @@ Welcome to my university coursework repository! This repository serves as a coll
 The repository is organized by subject/course name:
 
 * **`Prakticum/`** - Practical exercises, lab work, and hands-on assignments. (Mainly exercises on cisco packet tracer)
-* **`БПЕ/`** - Materials and code related to the course БПЕ. (C)
-* **`ОИП/`** - Materials and code related to the course ОИП. (Exercises on cisco packet tracer and kicad)
-* **`ФИЗИКА/`** - Scripts, calculations, and lab work for Physics.
-* **`въведение по програмиране/`** - Foundational tasks and projects from the Introduction to Programming course. (Python)
+* **`BPE/`** - Materials and code related to the course БПЕ. (C)
+* **`OIP/`** - Materials and code related to the course ОИП. (Exercises on cisco packet tracer and kicad)
+* **`Fizika/`** - Scripts, calculations, and lab work for Physics.
+* **`VP/`** - Foundational tasks and projects from the Introduction to Programming course. (Python)
 
 ## 💻 Technologies Used
 * **Python** 
